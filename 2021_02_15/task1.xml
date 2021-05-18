@@ -45,7 +45,7 @@
         <xsl:template match="/">
             <html>
                 <head>
-                    <title>Ivan Shirokov</title>
+                    <title>Renat</title>
                     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
                 </head>
                 <body>

@@ -42,7 +42,7 @@
             <html>
                 <head>
                     <meta charset="UTF-8" />
-                    <title>Ivan Shirokov</title>
+                    <title>Renat</title>
                 </head>
                 <body>
                     <xsl:element name="svg">
