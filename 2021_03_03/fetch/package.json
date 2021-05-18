@@ -1,0 +1,17 @@
+{
+  "name": "fetch_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "dev":"nodemon ."
+  },
+  "keywords": [],
+  "author": "Renat Sadykov  <example@microsoft.com>",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

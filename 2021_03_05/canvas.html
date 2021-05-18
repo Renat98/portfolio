@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas height="8000" width="8000" id="myCanvas"></canvas>
+  </body>
+  <script>
+    function ready() {
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      let counter = 0;
+      let y = 40;
+      let x = 40;
+      var t0 = performance.now();
+      for (let i = 0; i < 100000; i++) {
+        if (counter % 100 === 0) {
+          y += 80;
+          x = 40;
+        }
+        ctx.beginPath();
+        ctx.arc(x, y, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+        counter++;
+        x += 80;
+      }
+      var t1 = performance.now();
+      console.log(t1 - t0);
+    }
+
+    document.addEventListener("DOMContentLoaded", ready);
+  </script>
+</html>

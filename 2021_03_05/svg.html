@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <svg height="80000" width="80000" id="cont"></svg>
+  </body>
+  <script>
+    function ready() {
+      var svgns = "http://www.w3.org/2000/svg",
+        container = document.getElementById("cont");
+      let counter = 0;
+      let y = 40;
+      let x = 40;
+      var t0 = performance.now();
+      for (let i = 0; i < 100000; i++) {
+        var circle = document.createElementNS(svgns, "circle");
+
+        if (counter % 100 === 0) {
+          y += 80;
+          x = 40;
+        }
+        circle.setAttributeNS(null, "cx", x);
+        circle.setAttributeNS(null, "cy", y);
+
+        circle.setAttributeNS(null, "r", 40);
+        circle.setAttributeNS(
+          null,
+          "style",
+          "fill: white; stroke: black; stroke-width: 1px;"
+        );
+        container.appendChild(circle);
+        counter++;
+        x += 80;
+      }
+      var t1 = performance.now();
+      console.log(t1 - t0);
+    }
+
+    document.addEventListener("DOMContentLoaded", ready);
+  </script>
+</html>
