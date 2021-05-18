@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="#xslt_task2"?>
+<!DOCTYPE root [
+    <!ATTLIST xsl:stylesheet id ID #REQUIRED>
+    <!ELEMENT root (xsl:stylesheet, графика)*>
+    <!ELEMENT xsl:stylesheet (xsl:template)*>
+    <!ELEMENT xsl:template (html)*>
+    <!ELEMENT html (head, body)*>
+    <!ELEMENT head (meta, title)*>
+    <!ELEMENT meta EMPTY>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT body (xsl:element)*>
+    <!ELEMENT xsl:element ANY>
+    <!ELEMENT xsl:attribute (xsl:value-of)*>
+    <!ELEMENT xsl:for-each (xsl:element)*>
+    <!ELEMENT графика (эллипс)*>
+    <!ELEMENT эллипс EMPTY>
+    <!ELEMENT xsl:value-of EMPTY>
+    <!ATTLIST xsl:stylesheet version CDATA #REQUIRED>
+    <!ATTLIST xsl:stylesheet xmlns:xsl CDATA #REQUIRED>
+    <!ATTLIST xsl:template match CDATA #REQUIRED>
+    <!ATTLIST meta charset CDATA #REQUIRED>
+    <!ATTLIST xsl:element name CDATA #REQUIRED>
+    <!ATTLIST xsl:attribute name CDATA #REQUIRED>
+    <!ATTLIST xsl:value-of select CDATA #REQUIRED>
+    <!ATTLIST xsl:for-each select CDATA #REQUIRED>
+    <!ATTLIST графика высота CDATA #REQUIRED>
+    <!ATTLIST графика ширина CDATA #REQUIRED>
+    <!ATTLIST эллипс id ID #REQUIRED>
+    <!ATTLIST эллипс заливка CDATA #REQUIRED>
+    <!ATTLIST эллипс ободок CDATA #REQUIRED>
+    <!ATTLIST эллипс ширина-ободка CDATA #REQUIRED>
+    <!ATTLIST эллипс cx CDATA #REQUIRED>
+    <!ATTLIST эллипс cy CDATA #REQUIRED>
+    <!ATTLIST эллипс rx CDATA #REQUIRED>
+    <!ATTLIST эллипс ry CDATA #REQUIRED>
+]>
+<root>
+    <xsl:stylesheet version="1.0" id="xslt_task2" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        <xsl:template match="xsl:stylesheet" />
+        <xsl:template match="/">
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <title>Ivan Shirokov</title>
+                </head>
+                <body>
+                    <xsl:element name="svg">
+                        <xsl:attribute name="height">
+                            <xsl:value-of select="root/графика/@высота" />
+                        </xsl:attribute>
+                        <xsl:attribute name="width">
+                            <xsl:value-of select="root/графика/@ширина" />
+                        </xsl:attribute>
+                        <xsl:for-each select="root/графика/эллипс">
+                            <xsl:element name="ellipse">
+                                <xsl:attribute name="cx">
+                                    <xsl:value-of select="@cx" />
+                                </xsl:attribute>
+                                <xsl:attribute name="cy">
+                                    <xsl:value-of select="@cy" />
+                                </xsl:attribute>
+                                <xsl:attribute name="rx">
+                                    <xsl:value-of select="@rx" />
+                                </xsl:attribute>
+                                <xsl:attribute name="ry">
+                                    <xsl:value-of select="@ry" />
+                                </xsl:attribute>
+                                <xsl:attribute name="fill">
+                                    <xsl:value-of select="@заливка" />
+                                </xsl:attribute>
+                                <xsl:attribute name="stroke-width">
+                                    <xsl:value-of select="@ширина-ободка" />
+                                </xsl:attribute>
+                                <xsl:attribute name="stroke">
+                                    <xsl:value-of select="@ободок" />
+                                </xsl:attribute>
+                            </xsl:element>
+                        </xsl:for-each>
+                    </xsl:element>
+                </body>
+            </html>
+        </xsl:template>
+    </xsl:stylesheet>
+    <графика ширина="640" высота="480">
+        <эллипс id="графика_1" заливка="rgba(255,0,0,0.5)" ободок="white" ширина-ободка="5" cx="206" cy="139" rx="100" ry="100" />
+        <эллипс id="графика_2" заливка="rgba(0,0,255,0.5)" ободок="white" ширина-ободка="5" cx="108" cy="111" rx="100" ry="100" />
+        <эллипс id="графика_3" заливка="rgba(0,255,0,0.5)" ободок="white" ширина-ободка="5" cx="134" cy="215" rx="100" ry="100" />
+    </графика>
+</root>
